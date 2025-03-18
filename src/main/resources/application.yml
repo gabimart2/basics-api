@@ -1,0 +1,29 @@
+## Configuration for App name and Spring Data
+spring:
+  security:
+    enabled: false
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  application:
+    name: ${APP_NAME:ms-todos}
+  datasource:
+    url: jdbc:h2:mem:todosdb;Mode=MySQL
+    username: sa  # Usuario por defecto
+    password:     # Contraseña vacía por defecto
+    driverClassName: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+        trace: false
+
+## Instance port
+server:
+  port: ${PORT:8080}
